@@ -13,7 +13,7 @@ for entry in "."/*
 do
   f=$(basename -- "$entry")
   pngquant "$entry"
-  if [ $overwrite = 1 ]; then
+  if [ $overwrite = 1 ] && [ -f "${f%.png}-fs8.png" ]; then
     rm "$entry"
     mv "${f%.png}-fs8.png" "$entry"
   fi
